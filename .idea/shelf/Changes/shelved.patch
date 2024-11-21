@@ -1,0 +1,241 @@
+Index: .idea/kotlinc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/kotlinc.xml b/.idea/kotlinc.xml
+new file mode 100644
+--- /dev/null	(date 1732200604482)
++++ b/.idea/kotlinc.xml	(date 1732200604482)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="KotlinJpsPluginSettings">
++    <option name="version" value="2.0.0" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/migrations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/migrations.xml b/.idea/migrations.xml
+new file mode 100644
+--- /dev/null	(date 1732200604484)
++++ b/.idea/migrations.xml	(date 1732200604484)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectMigrations">
++    <option name="MigrateToGradleLocalJavaHome">
++      <set>
++        <option value="$PROJECT_DIR$" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/runConfigurations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+new file mode 100644
+--- /dev/null	(date 1732200490001)
++++ b/.idea/runConfigurations.xml	(date 1732200490001)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="com.intellij.execution.junit.AbstractAllInDirectoryConfigurationProducer" />
++        <option value="com.intellij.execution.junit.AllInPackageConfigurationProducer" />
++        <option value="com.intellij.execution.junit.PatternConfigurationProducer" />
++        <option value="com.intellij.execution.junit.TestInClassConfigurationProducer" />
++        <option value="com.intellij.execution.junit.UniqueIdConfigurationProducer" />
++        <option value="com.intellij.execution.junit.testDiscovery.JUnitTestDiscoveryConfigurationProducer" />
++        <option value="org.jetbrains.kotlin.idea.junit.KotlinJUnitRunConfigurationProducer" />
++        <option value="org.jetbrains.kotlin.idea.junit.KotlinPatternConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_11_45__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_11_45__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_11_45__Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1732200452281)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_11_45__Changes_.xml	(date 1732200452281)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_21_11_2024_11_45_[Changes]" date="1732200324647" recycled="false" toDelete="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_11_45_[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 21/11/2024 11:45 [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/deploymentTargetSelector.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetSelector.xml b/.idea/deploymentTargetSelector.xml
+new file mode 100644
+--- /dev/null	(date 1732200490003)
++++ b/.idea/deploymentTargetSelector.xml	(date 1732200490003)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="deploymentTargetSelector">
++    <selectionStates>
++      <SelectionState runConfigName="app">
++        <option name="selectionMode" value="DROPDOWN" />
++      </SelectionState>
++    </selectionStates>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1732200489998)
++++ b/.idea/compiler.xml	(date 1732200489998)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="21" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+new file mode 100644
+--- /dev/null	(date 1732200604481)
++++ b/.idea/gradle.xml	(date 1732200604481)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="GradleSettings">
++    <option name="linkedExternalProjectsSettings">
++      <GradleProjectSettings>
++        <option name="testRunner" value="CHOOSE_PER_TEST" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
++        <option name="modules">
++          <set>
++            <option value="$PROJECT_DIR$" />
++            <option value="$PROJECT_DIR$/app" />
++          </set>
++        </option>
++        <option name="resolveExternalAnnotations" value="false" />
++      </GradleProjectSettings>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1732200489963)
++++ b/.idea/vcs.xml	(date 1732200489963)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_11_45_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_11_45_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_11_45_[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1732200330711)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_11_45_[Changes]/shelved.patch	(date 1732200330711)
+@@ -0,0 +1,45 @@
++Index: app/src/main/java/com/example/tetris/view/Tetris.kt
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.example.tetris.view\r\n\r\nimport androidx.compose.foundation.background\r\nimport androidx.compose.foundation.layout.Arrangement\r\nimport androidx.compose.foundation.layout.Column\r\nimport androidx.compose.foundation.layout.fillMaxSize\r\nimport androidx.compose.runtime.Composable\r\nimport androidx.compose.runtime.getValue\r\nimport androidx.compose.runtime.mutableIntStateOf\r\nimport androidx.compose.runtime.mutableStateOf\r\nimport androidx.compose.runtime.remember\r\nimport androidx.compose.runtime.setValue\r\nimport androidx.compose.ui.Alignment\r\nimport androidx.compose.ui.Modifier\r\nimport androidx.compose.ui.text.SpanStyle\r\nimport androidx.compose.ui.text.buildAnnotatedString\r\nimport androidx.compose.ui.text.rememberTextMeasurer\r\nimport androidx.compose.ui.text.withStyle\r\nimport com.example.tetris.ui.theme.BLACK80\r\nimport com.example.tetris.ui.theme.WHITE\r\n\r\n@Composable\r\nfun Tetris(){\r\n\r\n    var pontuacao by remember {\r\n        mutableIntStateOf(0)\r\n    }\r\n\r\n    Column(\r\n        modifier = Modifier.fillMaxSize()\r\n            .background(BLACK80),\r\n        horizontalAlignment = Alignment.CenterHorizontally,\r\n        verticalArrangement = Arrangement.Center\r\n    ) {\r\n        Text(\r\n            text = buildAnnotatedString {\r\n                append(\"Pontuação: \")\r\n                withStyle(\r\n                    style = SpanStyle(\r\n                        color = WHITE\r\n                    )\r\n                ){\r\n                    append(\"$pontuacao\")\r\n                }\r\n            }\r\n        )\r\n    }\r\n\r\n}
++===================================================================
++diff --git a/app/src/main/java/com/example/tetris/view/Tetris.kt b/app/src/main/java/com/example/tetris/view/Tetris.kt
++--- a/app/src/main/java/com/example/tetris/view/Tetris.kt	(revision 1893415ce35a76a767c3ea8a07fff7d269b0d5a3)
+++++ b/app/src/main/java/com/example/tetris/view/Tetris.kt	(date 1732200284646)
++@@ -4,17 +4,15 @@
++ import androidx.compose.foundation.layout.Arrangement
++ import androidx.compose.foundation.layout.Column
++ import androidx.compose.foundation.layout.fillMaxSize
+++import androidx.compose.material3.Text
++ import androidx.compose.runtime.Composable
++ import androidx.compose.runtime.getValue
++ import androidx.compose.runtime.mutableIntStateOf
++-import androidx.compose.runtime.mutableStateOf
++ import androidx.compose.runtime.remember
++-import androidx.compose.runtime.setValue
++ import androidx.compose.ui.Alignment
++ import androidx.compose.ui.Modifier
++ import androidx.compose.ui.text.SpanStyle
++ import androidx.compose.ui.text.buildAnnotatedString
++-import androidx.compose.ui.text.rememberTextMeasurer
++ import androidx.compose.ui.text.withStyle
++ import com.example.tetris.ui.theme.BLACK80
++ import com.example.tetris.ui.theme.WHITE
++@@ -22,7 +20,7 @@
++ @Composable
++ fun Tetris(){
++ 
++-    var pontuacao by remember {
+++    val pontuacao by remember {
++         mutableIntStateOf(0)
++     }
++ 
++@@ -42,7 +40,7 @@
++                 ){
++                     append("$pontuacao")
++                 }
++-            }
+++            },
++         )
++     }
++ 
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1732200489958)
++++ b/.idea/misc.xml	(date 1732200489958)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_11_45_[Changes]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_11_2024_11_45_[Changes]1/shelved.patch
+new file mode 100644
