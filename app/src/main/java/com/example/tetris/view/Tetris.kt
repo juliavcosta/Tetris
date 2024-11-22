@@ -1,5 +1,6 @@
 package com.example.tetris.view
 
+import android.widget.Toast
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -27,6 +29,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
@@ -38,6 +41,7 @@ import com.example.tetris.ui.theme.BLACK80
 import com.example.tetris.ui.theme.GREEN
 import com.example.tetris.ui.theme.WHITE
 import kotlin.random.Random
+import kotlinx.coroutines.*
 
 const val LARGURA = 300
 const val ALTURA = 600
@@ -45,15 +49,62 @@ const val TAMANHO_BLOCO = 30
 const val LARGURA_TABULEIRO = LARGURA / TAMANHO_BLOCO
 const val ALTURA_TABULIERO = ALTURA / TAMANHO_BLOCO
 const val BORDA_TABULEIRO = 2f
-
+const val TIMER_DELAY = 700
 
 @Composable
 fun Tetris(){
-    var tabuleiro = remember { mutableStateOf(Array(300) { Array(600) { Color.Black } }) }
+    var tabuleiro = remember { mutableStateOf(Array(ALTURA_TABULIERO) { Array(LARGURA_TABULEIRO) { Color.Black } }) }
     var peca by remember { mutableStateOf(gerarNovaPeca()) }
     var pontuacao by remember { mutableStateOf(0) }
     var level by remember { mutableIntStateOf(1)}
     var gameOver by remember { mutableStateOf(false)}
+    var context = LocalContext.current
+
+    fun getTimerDelay(pontuacao: Int): Int{
+        return when{
+            pontuacao >= 2500 -> 100
+            pontuacao >= 1500 -> 200
+            pontuacao >= 1000 -> 300
+            pontuacao >= 500 -> 500
+            else -> TIMER_DELAY
+        }
+    }
+
+    fun reinicarJogo(){
+        tabuleiro = mutableStateOf(Array(ALTURA_TABULIERO) { Array(LARGURA_TABULEIRO) { Color.Black } })
+        peca = gerarNovaPeca()
+        pontuacao = 0
+        level = 1
+        gameOver = false
+    }
+    when (pontuacao){
+        500 -> level = 2
+        1000 -> level = 3
+        1500 -> level = 4
+        2500 -> level = 5
+    }
+
+    LaunchedEffect(Unit) {
+        while(!gameOver){
+            val delayTime = getTimerDelay(pontuacao).toLong()
+            delay(delayTime)
+            if (moverPeca(tabuleiro,peca,0,1)){
+                peca = peca.copy(y = peca.y + 1)
+            }else{
+                tabuleiro.value = fixarPecaTabuleiro(tabuleiro.value, peca)
+                val removerLinhasCompletas = removerLinhasCompletas(tabuleiro.value)
+                pontuacao += removerLinhasCompletas * 100
+                peca = gerarNovaPeca()
+
+                if(!moverPeca(tabuleiro,peca,0,0)){
+                    gameOver = true
+                    Toast.makeText(context,"Fim do Jogo!: $pontuacao", Toast.LENGTH_LONG).show()
+                    delay(2000)
+                    reinicarJogo()
+                }
+            }
+        }
+    }
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -96,7 +147,7 @@ fun Tetris(){
                     peca = peca.copy(indexRotacao = (peca.indexRotacao + 1) % peca.tipo.shapes.size)
                     if(!moverPeca(tabuleiro, peca,0,0 )){
                         peca = peca.copy(indexRotacao = (peca.indexRotacao - 1) % peca.tipo.shapes.size)
-                        }
+                    }
                 }
                 .pointerInput(Unit){
                     detectDragGestures { _, dragAmount ->
@@ -146,34 +197,53 @@ fun Tetris(){
                         start = Offset(x * tamanhoBloco, 0f ),
                         end = Offset(x * tamanhoBloco, canvasAltura)
 
-                        )
+                    )
                 }
-                 for(y in 0 until alturaTabuleiro){
-                     drawLine(
-                         color = WHITE,
-                         start = Offset(0f, y * tamanhoBloco),
-                         end = Offset(canvasLargura, y * tamanhoBloco)
-                     )
+                for(y in 0 until alturaTabuleiro){
+                    drawLine(
+                        color = WHITE,
+                        start = Offset(0f, y * tamanhoBloco),
+                        end = Offset(canvasLargura, y * tamanhoBloco)
+                    )
 
-                 }
+                }
                 val formaDaPeca = peca.tipo. shapes[peca.indexRotacao]
                 formaDaPeca.forEachIndexed{ i, row ->
                     row.forEachIndexed { j, block ->
-                    if (block==1){
-                        drawRect(
-                            color = peca.tipo.cor,
-                            topLeft = Offset(
-                                (peca.x + j ) * tamanhoBloco + BORDA_TABULEIRO / 2,
-                                (peca.y + i) * tamanhoBloco + BORDA_TABULEIRO / 2
-                            ),
-                            size = Size(tamanhoBloco - BORDA_TABULEIRO, tamanhoBloco - BORDA_TABULEIRO)
-                        )
-                    }
-                        
+                        if (block==1){
+                            drawRect(
+                                color = peca.tipo.cor,
+                                topLeft = Offset(
+                                    (peca.x + j ) * tamanhoBloco + BORDA_TABULEIRO / 2,
+                                    (peca.y + i) * tamanhoBloco + BORDA_TABULEIRO / 2
+                                ),
+                                size = Size(tamanhoBloco - BORDA_TABULEIRO, tamanhoBloco - BORDA_TABULEIRO)
+                            )
+                        }
+
                     }
 
 
                 }
+
+                for (y in tabuleiro.value.indices) {
+                    for (x in tabuleiro.value[y].indices) {
+                        if (tabuleiro.value[y][x] != Color.Black) {
+                            drawRect(
+                                color = tabuleiro.value[y][x],
+                                topLeft = Offset(
+                                    x * tamanhoBloco + BORDA_TABULEIRO / 2,
+                                    y * tamanhoBloco + BORDA_TABULEIRO / 2
+                                ),
+                                size = Size(
+                                    tamanhoBloco - BORDA_TABULEIRO,
+                                    tamanhoBloco - BORDA_TABULEIRO
+                                )
+                            )
+                        }
+                    }
+                }
+
             }
         }
     }
@@ -184,7 +254,7 @@ private fun gerarNovaPeca(): PecaTetris{
     return PecaTetris(tipo = tipoPeca,  LARGURA_TABULEIRO / 2 - tipoPeca.shapes[0][0].size/ 2, 0)
 }
 private fun moverPeca(tabuleiro: MutableState<Array<Array<Color>>>, peca: PecaTetris, dx: Int, dy: Int):Boolean{
-    peca.tipo.shapes[peca.indexRotacao].forEachIndexed { i, row ->  
+    peca.tipo.shapes[peca.indexRotacao].forEachIndexed { i, row ->
         row.forEachIndexed { j, block ->
             if (block ==1){
                 val novoX = peca.x + j + dx
@@ -220,8 +290,9 @@ private fun removerLinhasCompletas(tabuleiro: Array<Array<Color>>): Int {
             for (k in i downTo 1) {
                 tabuleiro[k] = tabuleiro[k - 1]
             }
+            tabuleiro[0] = Array(LARGURA_TABULEIRO){Color.Black}
             limparLinhas++
         }
     }
     return limparLinhas
-}
+    }
