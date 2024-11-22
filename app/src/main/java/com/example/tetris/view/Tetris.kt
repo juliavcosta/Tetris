@@ -55,10 +55,10 @@ const val TIMER_DELAY = 700
 fun Tetris(){
     var tabuleiro = remember { mutableStateOf(Array(ALTURA_TABULIERO) { Array(LARGURA_TABULEIRO) { Color.Black } }) }
     var peca by remember { mutableStateOf(gerarNovaPeca()) }
-    var pontuacao by remember { mutableStateOf(0) }
+    var pontuacao by remember { mutableIntStateOf(0) }
     var level by remember { mutableIntStateOf(1)}
     var gameOver by remember { mutableStateOf(false)}
-    var context = LocalContext.current
+    val context = LocalContext.current
 
     fun getTimerDelay(pontuacao: Int): Int{
         return when{
@@ -71,7 +71,7 @@ fun Tetris(){
     }
 
     fun reinicarJogo(){
-        tabuleiro = Array(ALTURA_TABULIERO){Array(LARGURA_TABULEIRO){Color.Black} }
+        tabuleiro = mutableStateOf(Array(ALTURA_TABULIERO) { Array(LARGURA_TABULEIRO) { Color.Black } })
         peca = gerarNovaPeca()
         pontuacao = 0
         level = 1
@@ -91,8 +91,8 @@ fun Tetris(){
             if (moverPeca(tabuleiro,peca,0,1)){
                 peca = peca.copy(y = peca.y + 1)
             }else{
-                tabuleiro = fixarPecaTabuleiro(tabuleiro,peca)
-                val removerLinhasCompletas = removerLinhasCompletas(tabuleiro)
+                tabuleiro.value = fixarPecaTabuleiro(tabuleiro.value, peca)
+                val removerLinhasCompletas = removerLinhasCompletas(tabuleiro.value)
                 pontuacao += removerLinhasCompletas * 100
                 peca = gerarNovaPeca()
 
@@ -226,13 +226,19 @@ fun Tetris(){
 
                 }
 
-                for(y in tabuleiro[].indices){
-                    for (x in tabuleiro[y].indices){
-                        if (tabuleiro[y][x] != Color.Black){
+                for (y in tabuleiro.value.indices) {
+                    for (x in tabuleiro.value[y].indices) {
+                        if (tabuleiro.value[y][x] != Color.Black) {
                             drawRect(
-                                color = tabuleiro[y][x],
-                                topLeft = Offset(x * tamanhoBloco + BORDA_TABULEIRO / 2, y * tamanhoBloco + BORDA_TABULEIRO / 2),
-                                size = Size(tamanhoBloco - BORDA_TABULEIRO, tamanhoBloco - BORDA_TABULEIRO)
+                                color = tabuleiro.value[y][x],
+                                topLeft = Offset(
+                                    x * tamanhoBloco + BORDA_TABULEIRO / 2,
+                                    y * tamanhoBloco + BORDA_TABULEIRO / 2
+                                ),
+                                size = Size(
+                                    tamanhoBloco - BORDA_TABULEIRO,
+                                    tamanhoBloco - BORDA_TABULEIRO
+                                )
                             )
                         }
                     }
